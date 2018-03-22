@@ -1,0 +1,74 @@
+﻿<div id="divEmp">
+    <h2>Employee Details</h2>
+    <table id="tblcollections" class="table table-bordered">
+        <thead>
+            <tr style="text-align: left">
+                <th>EmpNo</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date Of Birth</th>
+                <th>Joining Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in emp">
+                <td><span>{{e.id}}</span></td>
+                <td><span>{{e.name}}</span></td>
+                <td><span>{{e.location}}</span></td>
+                <td><span>{{e.dateOfBirth}}</span></td>
+                <td><span>{{e.joiningDate}}</span></td>
+                <td>
+                    <button class="btn btn-success btn-xs" ng-click="editEmp(e.id)">Edit</button> &nbsp;
+                    <button class="btn btn-primary btn-xs" ng-click="delEmp(e.id)">Delete</button></td>
+            </tr>
+            <tr>
+                <td colspan="6"><button class="btn btn-success btn-xs" ng-click="showForm()">Add Employee</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <form name="myForm">
+        <table id="tblCrud" class="table table-bordered" ng-show="firstTime">
+            <thead>
+                <tr style="text-align: left">
+                    <th>EmpNo</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date Of Birth</th>
+                    <th>Joining Date</th>
+
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" id="txtId" ng-model="id" style="width: 50px;" readonly="true" /></td>
+                    <td>
+                        <input type="text" id="txtName"  ng-model="name" required />
+                       
+                    </td>
+                    <td>
+                        <input type="text" id="txtLocation" required ng-model="location" /></td>
+                    <td>
+                        <input type="text" id="txtDob" required ng-model="dateOfBirth" /></td>
+                    <td>
+                        <input type="text" id="txtJD" required ng-model="joiningDate" /></td>
+
+                    <td>
+                        <input type="button" id="save" value="Save" class="btn btn-success btn-xs" ng-click="saveEmployee()"> &nbsp;
+                        <input type="button" id="cancel" value="Cancel" class="btn btn-warning btn-xs" ng-click="cancel()" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div id="mydiv" ng-show="loader">
+    <img src="Assets/Images/loader.gif" class="ajax-loader" />
+    Loading...
+</div>
